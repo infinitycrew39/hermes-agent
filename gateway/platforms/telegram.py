@@ -2379,11 +2379,6 @@ class TelegramAdapter(BasePlatformAdapter):
                 _NetErr = OSError  # type: ignore[misc,assignment]
 
             try:
-                from telegram.error import BadRequest as _BadReq
-            except ImportError:
-                _BadReq = None  # type: ignore[assignment,misc]
-
-            try:
                 from telegram.error import TimedOut as _TimedOut
             except (ImportError, AttributeError):
                 _TimedOut = None  # type: ignore[assignment,misc]
@@ -2462,12 +2457,12 @@ class TelegramAdapter(BasePlatformAdapter):
                             else:
                                 raise
                         break  # success
-                    except _NetErr as send_err:
-                        # BadRequest is a subclass of NetworkError in
-                        # python-telegram-bot but represents permanent errors
-                        # (not transient network issues). Detect and handle
-                        # specific cases instead of blindly retrying.
-                        if _BadReq and isinstance(send_err, _BadReq):
+                    except Exception as send_err:
+                        # Handle BadRequest semantics first. Different
+                        # python-telegram-bot versions/packages may expose
+                        # BadRequest with different inheritance, so this
+                        # branch must not depend on it being a NetworkError.
+                        if self._is_bad_request_error(send_err):
                             if self._is_thread_not_found_error(send_err) and effective_thread_id is not None:
                                 if private_dm_topic_send or (metadata and metadata.get("telegram_dm_topic_created_for_send")):
                                     return SendResult(
@@ -2531,6 +2526,21 @@ class TelegramAdapter(BasePlatformAdapter):
                                 continue
                             # Other BadRequest errors are permanent — don't retry
                             raise
+                        retry_after = getattr(send_err, "retry_after", None)
+                        if retry_after is not None or "retry after" in str(send_err).lower():
+                            if _send_attempt < 2:
+                                wait = float(retry_after) if retry_after is not None else 1.0
+                                logger.warning(
+                                    "[%s] Telegram flood control on send (attempt %d/3), retrying in %.1fs: %s",
+                                    self.name,
+                                    _send_attempt + 1,
+                                    wait,
+                                    send_err,
+                                )
+                                await asyncio.sleep(wait)
+                                continue
+                        if not isinstance(send_err, _NetErr):
+                            raise
                         # TimedOut is also a subclass of NetworkError. A
                         # generic timeout may have reached Telegram, so don't
                         # retry; a wrapped ConnectTimeout means no connection
@@ -2552,21 +2562,6 @@ class TelegramAdapter(BasePlatformAdapter):
                             await asyncio.sleep(wait)
                         else:
                             raise
-                    except Exception as send_err:
-                        retry_after = getattr(send_err, "retry_after", None)
-                        if retry_after is not None or "retry after" in str(send_err).lower():
-                            if _send_attempt < 2:
-                                wait = float(retry_after) if retry_after is not None else 1.0
-                                logger.warning(
-                                    "[%s] Telegram flood control on send (attempt %d/3), retrying in %.1fs: %s",
-                                    self.name,
-                                    _send_attempt + 1,
-                                    wait,
-                                    send_err,
-                                )
-                                await asyncio.sleep(wait)
-                                continue
-                        raise
                 message_ids.append(str(msg.message_id))
 
             # Re-trigger typing indicator after sending a message.
