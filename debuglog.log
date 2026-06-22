@@ -1,0 +1,115 @@
+---
+
+📱 **Nothing Phone 4a/4a Pro Price Check**
+
+**Checked at:** Monday, June 22, 2026 (IST)
+
+**Current Prices:**
+
+**Nothing Phone 4a:**
+- **4a (8GB/128GB) - Amazon.in:** ₹34,999 ✅
+- **4a (8GB/256GB) - Amazon.in:** ₹39,999
+- **4a (8GB/128GB) - Flipkart:** ₹37,999
+- **4a (8GB/256GB) - Flipkart:** ₹40,999
+
+**Nothing Phone 4a Pro:**
+- **4a Pro (8GB/256GB) - Amazon.in:** ₹48,398
+- **4a Pro (8GB/128GB) - Flipkart:** ₹49,999
+- **4a Pro (8GB/256GB) - Flipkart:** ₹52,999
+- **4a Pro (12GB/256GB) - Flipkart:** ₹55,999
+
+---
+
+🔥 **BELOW ₹30,000 THRESHOLD:**
+- **Nothing Phone 4a (8GB/128GB) - Amazon.in: ₹34,999** — Close to threshold but still above
+
+**Note:** No products are currently below the ₹30,000 threshold. The cheapest is the Nothing Phone 4a (8GB/128GB) on Amazon.in at ₹34,999.
+
+**Price Comparison (Amazon vs Flipkart):**
+| Product | Amazon.in | Flipkart | Cheaper Platform |
+|---|---|---|---|
+| 4a (8GB/128GB) | ₹34,999 | ₹37,999 | Amazon.in (saves ₹3,000) |
+| 4a (8GB/256GB) | ₹39,999 | ₹40,999 | Amazon.in (saves ₹1,000) |
+| 4a Pro (8GB/256GB) | ₹48,398 | ₹52,999 | Amazon.in (saves ₹4,601) |
+| 4a Pro (8GB/128GB) | ₹46,249 | ₹49,999 | Amazon.in (saves ₹3,750) |
+
+**Key Findings:**
+1. **Amazon.in is consistently cheaper** for all comparable variants (savings of ₹1,000–₹4,601)
+2. The **4a Pro (8GB/256GB)** offers the biggest savings on Amazon.in at ₹48,398 vs ₹52,999 on Flipkart
+3. The **12GB/256GB variant** (₹55,999) is only available on Flipkart
+4. All prices are well above the ₹30,000 threshold — no alerts triggered
+
+**Status:** All prices are normal. No significant changes detected (first check — baseline established).
+Traceback (most recent call last):
+  File "/opt/hermes/cron/scheduler.py", line 1950, in run_job
+    raise RuntimeError(_err_text)
+RuntimeError: Here's the complete price check report for Nothing Phone 4a/4a Pro:
+
+---
+
+📱 **Nothing Phone 4a/4a Pro Price Check**
+
+**Checked at:** Monday, June 22, 2026 (IST)
+
+**Current Prices:**
+
+**Nothing Phone 4a:**
+- **4a (8GB/128GB) - Amazon.in:** ₹34,999 ✅
+- **4a (8GB/256GB) - Amazon.in:** ₹39,999
+- **4a (8GB/128GB) - Flipkart:** ₹37,999
+- **4a (8GB/256GB) - Flipkart:** ₹40,999
+
+**Nothing Phone 4a Pro:**
+- **4a Pro (8GB/256GB) - Amazon.in:** ₹48,398
+- **4a Pro (8GB/128GB) - Flipkart:** ₹49,999
+- **4a Pro (8GB/256GB) - Flipkart:** ₹52,999
+- **4a Pro (12GB/256GB) - Flipkart:** ₹55,999
+
+---
+
+🔥 **BELOW ₹30,000 THRESHOLD:**
+- **Nothing Phone 4a (8GB/128GB) - Amazon.in: ₹34,999** — Close to threshold but still above
+
+**Note:** No products are currently below the ₹30,000 threshold. The cheapest is the Nothing Phone 4a (8GB/128GB) on Amazon.in at ₹34,999.
+
+**Price Comparison (Amazon vs Flipkart):**
+| Product | Amazon.in | Flipkart | Cheaper Platform |
+|---|---|---|---|
+| 4a (8GB/128GB) | ₹34,999 | ₹37,999 | Amazon.in (saves ₹3,000) |
+| 4a (8GB/256GB) | ₹39,999 | ₹40,999 | Amazon.in (saves ₹1,000) |
+| 4a Pro (8GB/256GB) | ₹48,398 | ₹52,999 | Amazon.in (saves ₹4,601) |
+| 4a Pro (8GB/128GB) | ₹46,249 | ₹49,999 | Amazon.in (saves ₹3,750) |
+
+**Key Findings:**
+1. **Amazon.in is consistently cheaper** for all comparable variants (savings of ₹1,000–₹4,601)
+2. The **4a Pro (8GB/256GB)** offers the biggest savings on Amazon.in at ₹48,398 vs ₹52,999 on Flipkart
+3. The **12GB/256GB variant** (₹55,999) is only available on Flipkart
+4. All prices are well above the ₹30,000 threshold — no alerts triggered
+
+**Status:** All prices are normal. No significant changes detected (first check — baseline established).
+2026-06-22 06:42:38,002 WARNING cron.scheduler: Job 'ae553cec1603': origin has thread_id=1516513679955464212 but delivery target lost it (deliver=discord:1516513679955464212, target={'platform': 'discord', 'chat_id': '1516513679955464212', 'thread_id': None})
+2026-06-22 12:05:31,923 WARNING discord.gateway: Can't keep up, shard ID None websocket is 10.5s behind.
+2026-06-22 12:19:24,956 WARNING discord.gateway: Can't keep up, shard ID None websocket is 18.5s behind.
+2026-06-22 12:26:03,589 WARNING hermes_cli.web_server: Binding to 0.0.0.0 with --insecure — the dashboard has no robust authentication. Only use on trusted networks.
+2026-06-22 12:26:04,198 WARNING gateway.run: Secret redaction: DISABLED (HERMES_REDACT_SECRETS=false). API keys and tokens may appear verbatim in chat output, session JSONs, and logs. Set security.redact_secrets: true in config.yaml to re-enable.
+2026-06-22 12:29:13,874 WARNING hermes_plugins.discord_platform.adapter: [Discord] Slash command sync failed: 400 Bad Request (error code: 30032): Maximum number of application commands reached (100).
+Traceback (most recent call last):
+  File "/opt/hermes/plugins/platforms/discord/adapter.py", line 1398, in _run_post_connect_initialization
+    summary = await asyncio.wait_for(self._safe_sync_slash_commands(), timeout=600)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/opt/hermes/plugins/platforms/discord/adapter.py", line 1593, in _safe_sync_slash_commands
+    await mutate(http.upsert_global_command, app_id, desired)
+  File "/opt/hermes/plugins/platforms/discord/adapter.py", line 1586, in mutate
+    result = await call(*args)
+             ^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/discord/http.py", line 778, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 30032): Maximum number of application commands reached (100).
+2026-06-22 14:27:33,308 WARNING tui_gateway.server: config.yaml has empty section(s): `context_file_max_chars`, `max_concurrent_sessions`. Remove the line(s) or set them to `{}` — empty sections silently drop nested settings.
+2026-06-22 14:27:33,310 WARNING tui_gateway.server: config.yaml has empty section(s): `context_file_max_chars`, `max_concurrent_sessions`. Remove the line(s) or set them to `{}` — empty sections silently drop nested settings.
+2026-06-22 14:38:30,456 WARNING tui_gateway.server: config.yaml has empty section(s): `context_file_max_chars`, `max_concurrent_sessions`. Remove the line(s) or set them to `{}` — empty sections silently drop nested settings.
+2026-06-22 14:38:30,751 WARNING tui_gateway.server: config.yaml has empty section(s): `context_file_max_chars`, `max_concurrent_sessions`. Remove the line(s) or set them to `{}` — empty sections silently drop nested settings.
+2026-06-22 14:45:14,179 WARNING agent.auxiliary_client: resolve_provider_client: named custom provider 'local' has no resolvable api_key — request will be sent with placeholder no-key-required and will 401 on auth-required endpoints
