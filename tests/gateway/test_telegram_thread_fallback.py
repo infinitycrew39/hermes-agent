@@ -48,6 +48,11 @@ class FakeRetryAfter(Exception):
         self.retry_after = seconds
 
 
+class FakeStandaloneBadRequest(Exception):
+    """BadRequest variant that is not a NetworkError subclass."""
+    pass
+
+
 # Build a fake telegram module tree so the adapter's internal imports work
 class _FakeInlineKeyboardButton:
     def __init__(self, text, callback_data=None, **kwargs):
@@ -1412,3 +1417,31 @@ async def test_send_retries_retry_after_errors():
     assert result.success is True
     assert result.message_id == "300"
     assert attempt[0] == 2
+
+
+@pytest.mark.asyncio
+async def test_send_thread_not_found_falls_back_when_badrequest_not_network(monkeypatch):
+    """Thread fallback should not depend on BadRequest inheriting NetworkError."""
+    adapter = _make_adapter()
+    call_log = []
+
+    monkeypatch.setattr(_fake_telegram_error, "BadRequest", FakeStandaloneBadRequest)
+
+    async def mock_send_message(**kwargs):
+        call_log.append(dict(kwargs))
+        if kwargs.get("message_thread_id") is not None:
+            raise FakeStandaloneBadRequest("Message thread not found")
+        return SimpleNamespace(message_id=777)
+
+    adapter._bot = SimpleNamespace(send_message=mock_send_message)
+
+    result = await adapter.send(
+        chat_id="-100123",
+        content="test message",
+        metadata={"thread_id": "99999"},
+    )
+
+    assert result.success is True
+    assert result.message_id == "777"
+    assert call_log[0].get("message_thread_id") == 99999
+    assert call_log[-1].get("message_thread_id") is None
